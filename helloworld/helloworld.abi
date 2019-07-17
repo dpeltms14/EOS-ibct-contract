@@ -4,6 +4,21 @@
     "types": [],
     "structs": [
         {
+            "name": "getaccount",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "gettimenow",
+            "base": "",
+            "fields": []
+        },
+        {
             "name": "hi",
             "base": "",
             "fields": [
@@ -15,6 +30,16 @@
         }
     ],
     "actions": [
+        {
+            "name": "getaccount",
+            "type": "getaccount",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "gettimenow",
+            "type": "gettimenow",
+            "ricardian_contract": ""
+        },
         {
             "name": "hi",
             "type": "hi",
