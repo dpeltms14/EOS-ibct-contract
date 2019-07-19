@@ -14,6 +14,16 @@
             ]
         },
         {
+            "name": "findage",
+            "base": "",
+            "fields": [
+                {
+                    "name": "age",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
             "name": "insert",
             "base": "",
             "fields": [
@@ -31,7 +41,7 @@
                 },
                 {
                     "name": "age",
-                    "type": "uint32"
+                    "type": "uint64"
                 }
             ]
         },
@@ -53,7 +63,7 @@
                 },
                 {
                     "name": "age",
-                    "type": "uint32"
+                    "type": "uint64"
                 }
             ]
         },
@@ -75,7 +85,7 @@
                 },
                 {
                     "name": "age",
-                    "type": "uint32"
+                    "type": "uint64"
                 }
             ]
         }
@@ -84,6 +94,11 @@
         {
             "name": "erase",
             "type": "erase",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "findage",
+            "type": "findage",
             "ricardian_contract": ""
         },
         {
@@ -99,7 +114,7 @@
     ],
     "tables": [
         {
-            "name": "people",
+            "name": "peopletwo",
             "type": "person",
             "index_type": "i64",
             "key_names": [],
