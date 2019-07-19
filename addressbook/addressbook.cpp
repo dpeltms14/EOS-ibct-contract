@@ -8,8 +8,8 @@ CONTRACT addressbook: public contract{
 
         ACTION findage( uint64_t age ) {
             address_index addresses( get_self(), get_self().value );
+            
             auto forSecondary = addresses.get_index< "byage"_n >();
-
             auto itr = forSecondary.require_find( age, "no age" );
 
             print( itr->user, " ", itr->age );
@@ -27,6 +27,7 @@ CONTRACT addressbook: public contract{
                     row.last_name = last_name;
                     row.age = age;
                 });
+
                 print( "insert success" );
 
             }else {
