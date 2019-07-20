@@ -6,14 +6,14 @@ CONTRACT helloworld: public contract {
     public:
         using contract::contract;
 
-        ACTION hi(name user) {
+        ACTION hi( name user ) {
             require_auth( user );
-            print("hello, ", user);
+            print( "hello, ", user );
         }
 
-        ACTION getaccount(name user){
+        ACTION getaccount( name user ) {
             require_auth( get_self() );
-            print( is_account(user) );
+            print( is_account( user ) );
         }
 
         // ACTION gettimenow(){
