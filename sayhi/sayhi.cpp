@@ -7,7 +7,7 @@ CONTRACT sayhi: public contract {
         using contract::contract;
 
         ACTION hi( name user ) {
-            require_auth( user );       // 인자받은것과 다르면 권한에러 출력
+            require_auth( user );       // 인자로 받은 계정과 다르면 권한에러 출력
             say_hi forHi( get_self(), get_self().value );            
             auto itr = forHi.require_find( user.value, "please, insert account" );
 
@@ -23,7 +23,7 @@ CONTRACT sayhi: public contract {
 
             check( itr == forInsert.end(), "already exists" );
 
-            forInsert.emplace( get_self(), [&]( auto& row) {
+            forInsert.emplace( get_self(), [&]( auto& row ) {
                 row.user = user;
             });
 

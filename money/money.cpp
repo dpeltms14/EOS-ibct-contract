@@ -37,7 +37,11 @@ CONTRACT money: public contract {
 
             print( "income success" );
         }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 187f3eda80c74402112e615ce936a9071104eab0
         ACTION expenditure( name user, uint64_t mymoney ) {
             require_auth( user );
 
