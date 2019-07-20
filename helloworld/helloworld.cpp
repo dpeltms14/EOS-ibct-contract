@@ -19,7 +19,7 @@ CONTRACT helloworld: public contract {
         // ACTION gettimenow(){
         //     require_auth( get_self() );
         //     print( current_time() );
-        }
+        // }
 
     private:
 };

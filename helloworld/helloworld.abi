@@ -14,11 +14,6 @@
             ]
         },
         {
-            "name": "gettimenow",
-            "base": "",
-            "fields": []
-        },
-        {
             "name": "hi",
             "base": "",
             "fields": [
@@ -33,11 +28,6 @@
         {
             "name": "getaccount",
             "type": "getaccount",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "gettimenow",
-            "type": "gettimenow",
             "ricardian_contract": ""
         },
         {
