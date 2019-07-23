@@ -32,7 +32,7 @@ CONTRACT autokey2: public contract {
             To forTo( get_self(), get_self().value );
 
             forTo.emplace( from, [&]( auto& row ) {
-                row.mykey = forTo.available_primary_key();
+                row.mykey = forTo.available_primary_key();  //mykey가 1씩 증가
                 row.user = to;
                 row.balance = quantity;
             });
@@ -49,7 +49,7 @@ CONTRACT autokey2: public contract {
 
     private:
     TABLE insert {
-        uint64_t mykey;
+        uint64_t mykey;     // 부호가 없는 64비트로 선언
         name user;
         asset balance;
 
