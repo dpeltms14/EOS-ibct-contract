@@ -11,28 +11,52 @@ CONTRACT onnotify: public contract {
 
     [[eosio::on_notify( "eosio.token::transfer" )]]
     void ontransfer( name from, name to, asset quantity, std::string memo ) {
-        check( from == get_self(), "no out" );
+        if( from == get_self() ) {
+            outs outTable( get_self() , get_self().value );
 
-        outs myTable( get_self(), get_self().value );    // table 선언, get_self().value로 스코프 하나로 고정
-        
-        if( myTable.begin() == myTable.end() ) {    // 아무것도 없는경우 새로운~~를 만들어줘야한다.
-            myTable.emplace( from, [&]( auto& row ) {   // 위에서 from과 get_self()를 비교했기 때문에 from을 get_self()로 해도된다.
-                row.balance = quantity;
-            });      
+            auto itr = outTable.find( to.value );
+
+            if( itr == outTable.end() ) {
+                outTable.emplace( from, [&]( auto& row ) {
+                    row.user = to;
+                    row.balance = quantity;
+                });
+            } else {
+                outTable.modify( itr, from, [&]( auto& row ) {
+                    row.balance += quantity;
+                });
+            }
+
+            print( "give success" );
         } else {
-            auto itr = myTable.begin();     // 원소 하나 밖에 없기 때문에 find대신 begin으로 사용할 수 있다.
-            myTable.modify( itr, from, [&]( auto& row ) {
-                row.balance += quantity;
-            });
+            ins inTable( get_self() , get_self().value );
+
+            auto itr = inTable.find( from.value );  // 이부분에서 잘 선언해줘야 여러 user의 정보를 저장할 수 있다.
+
+            if( itr == inTable.end() ) {
+                inTable.emplace( to, [&]( auto& row ) {
+                    row.user = from;
+                    row.balance = quantity;
+                });
+            } else {
+                inTable.modify( itr, to, [&]( auto& row ) {
+                    row.balance += quantity;
+                });
+            }
+
+            print( "get success" );
         }
     }
 
     private:
     TABLE outstruct {
-        asset balance;  // 내가 상대에게 얼마나 보냈는지에 대한 누적그맥
+        name user;
+        asset balance;  // 내가 상대에게 얼마나 보냈는지에 대한 누적금액
 
-        uint64_t primary_key() const { return balance.symbol.code().raw(); };
+        uint64_t primary_key() const { return user.value; } // 심볼별로 계정을 분류하면 얼마를 주고받았는지 모르기 때문에
+                                                            // 테이블 내에 계정별로 분류되는 이유가 된다.
     };
 
-    typedef multi_index< "out"_n, outstruct > outs;
+    typedef multi_index< "out2"_n, outstruct > outs;
+    typedef multi_index< "in2"_n, outstruct > ins;
 };
