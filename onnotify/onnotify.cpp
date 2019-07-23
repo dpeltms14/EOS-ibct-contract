@@ -31,11 +31,11 @@ CONTRACT onnotify: public contract {
         } else {
             ins inTable( get_self() , get_self().value );
 
-            auto itr = inTable.find( from.value );  // 이부분에서 잘 선언해줘야 여러 user의 정보를 저장할 수 있다.
+            auto itr = inTable.find( from.value );  
 
             if( itr == inTable.end() ) {
                 inTable.emplace( to, [&]( auto& row ) {
-                    row.user = from;
+                    row.user = from;    // 이부분에서 잘 선언해줘야 여러 user의 정보를 저장할 수 있다.
                     row.balance = quantity;
                 });
             } else {
