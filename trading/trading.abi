@@ -1,0 +1,89 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "dummy",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "eraseall",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "insert",
+            "base": "",
+            "fields": [
+                {
+                    "name": "mykey",
+                    "type": "uint64"
+                },
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "balance",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "savesco",
+            "base": "",
+            "fields": [
+                {
+                    "name": "sco",
+                    "type": "uint64"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "dummy",
+            "type": "dummy",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "eraseall",
+            "type": "eraseall",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "receiver",
+            "type": "insert",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "sender",
+            "type": "insert",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "sreceiver",
+            "type": "savesco",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "ssender",
+            "type": "savesco",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}
